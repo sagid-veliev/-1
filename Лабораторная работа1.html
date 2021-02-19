@@ -22,21 +22,22 @@
             for(var i = 0; i < m4.length; i++){
             m3.push(m4[i]);
             }
-            for(var i = 0; i < m3.length; i++){
+            for(var i = 0; i < m3.length - 1; i++){
                 for(var j = i + 1; j < m3.length; j++){
-                   if(m3[i] == m3[j]){
-                   m3.splice(j,1);
+                   if(m3[i] == m3[j]){   
+                   m3.splice(j, 1);
                    }
                 }
             }
-            for(var i = 0; i < m3.length; i++){
+            
+            for(var i = 0; i < m3.length - 1; i++){
                 for(var j = 1 + i; j < m3.length; j++){
                    if(m3[i] == m3[j]){
                    m3.splice(j, 1);
                    }
                 }
             } 
-            for(var i = 0; i < m3.length; i++){
+            for(var i = 0; i < m3.length - 1; i++){
                 for(var j = i + 1; j < m3.length; j++){
                    if(m3[i] == m3[j]){
                    m3.splice(j, 1);
@@ -49,20 +50,20 @@
        
        function intercept()
        {
-   //         var m5 = [];
-     //       var m6 = [];
+            var m5 = [];
+            var m6 = [];
             var inter = [];
-/*
+
             for(var i = 0; i < m1.length; i++){
                 m5.push(m1[i]);
             }
             for(var i = 0; i < m2.length; i++){
                 m6.push(m2[i]);
-            }*/
-            for(var i = 0; i < m1.length; i++){
-                for(var j = 0; j < m2.length; j++){
-                   if(m1[i] == m2[j]){
-                   inter.push(m1[i]);
+            }
+            for(var i = 0; i < m5.length; i++){
+                for(var j = 0; j < m6.length; j++){
+                   if(m5[i] == m6[j]){
+                   inter.push(m5[i]);
                    }
                 }
             } 
@@ -90,18 +91,98 @@
             return inter;
        }            
        
+       function SimDifference()
+       {
+       var differ = [];
+       var m3 = []; var m4 = [];
+       for(var i = 0; i < m1.length; i++){
+           m3.push(m1[i]);
+       }
+       for(var i = 0; i < m3.length - 1; i++){
+           for(var j = i + 1; j < m3.length; j++){
+               if(m3[i] == m3[j]){
+               m3.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0; i < m3.length - 1; i++){
+           for(var j = i + 1; j < m3.length; j++){
+               if(m3[i] == m3[j]){
+               m3.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0; i < m3.length - 1; i++){
+           for(var j = i + 1; j < m3.length; j++){
+               if(m3[i] == m3[j]){
+               m3.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0; i < m2.length; i++){
+           m4.push(m2[i]);
+       }
+       for(var i = 0; i < m4.length - 1; i++){
+           for(var j = i + 1; j < m4.length; j++){
+               if(m4[i] == m4[j]){
+               m4.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0; i < m4.length - 1; i++){
+           for(var j = i + 1; j < m4.length; j++){
+               if(m4[i] == m4[j]){
+               m4.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0; i < m4.length - 1; i++){
+           for(var j = i + 1; j < m4.length; j++){
+               if(m4[i] == m4[j]){
+               m4.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0 ; i < m3.length; i++){
+           for(var j = 0; j < m4.length; j++){
+              if(m3[i] == m4[j]){
+              m3.splice(i, 1);
+              m4.splice(j, 1);
+              }
+           } 
+       }
+       for(var i = 0 ; i < m3.length; i++){
+           for(var j = 0; j < m4.length; j++){
+              if(m3[i] == m4[j]){
+              m3.splice(i, 1);
+              m4.splice(j, 1);
+              }
+           } 
+       }
+       for(var i = 0; i < m3.length; i++){
+          differ.push(m3[i]);
+          differ.push(m4[i]);
+          }
+
+       return differ;
+       }    
+       
+
        function calc()
        {
            var result = "";
            var result1 = "";
+           var result2 = "";
            m1 = document.getElementById('m1').value;
            m2 = document.getElementById('m2').value;
            m1 = m1.split(" "); 
            m2 = m2.split(" ");
            result = union();
            result1 = intercept();
+           result2 = SimDifference();
            document.getElementById('union').innerHTML = result;
            document.getElementById('intercept').innerHTML = result1;
+           document.getElementById('SimDifference').innerHTML = result2;
        }
 
   </script>
@@ -115,7 +196,7 @@
   </form>
   Объединение множеств: <span id='union'></span><br>
   Пересечение множеств: <span id='intercept'></span><br>
-  Симметрическая разность: <span id='difference'></span><br>
+  Симметрическая разность: <span id='SimDifference'></span><br>
   
 </body>
 </html>
