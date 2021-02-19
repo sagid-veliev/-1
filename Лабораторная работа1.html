@@ -1,0 +1,121 @@
+<html>
+<head>
+<p align="center"><font size=5 color="FF3399" face="Bold">"Лабораторная работа по ДМ №1"<br>Велиев Сагид<br>ИВТАСбд-11</font><br></pr>
+</head>
+<body bgcolor="#dadef8">
+
+  <script>
+
+       var m1; var m2;
+      
+       function union()
+       {    
+            var m3 = [];
+            var m4 = [];
+            var ResultOfUnion = [];
+            for(var i = 0; i < m1.length; i++){
+                m3.push(m1[i]);
+            }
+            for(var i = 0; i < m2.length; i++){
+                m4.push(m2[i]);
+            }  
+            for(var i = 0; i < m4.length; i++){
+            m3.push(m4[i]);
+            }
+            for(var i = 0; i < m3.length; i++){
+                for(var j = i + 1; j < m3.length; j++){
+                   if(m3[i] == m3[j]){
+                   m3.splice(j,1);
+                   }
+                }
+            }
+            for(var i = 0; i < m3.length; i++){
+                for(var j = 1 + i; j < m3.length; j++){
+                   if(m3[i] == m3[j]){
+                   m3.splice(j, 1);
+                   }
+                }
+            } 
+            for(var i = 0; i < m3.length; i++){
+                for(var j = i + 1; j < m3.length; j++){
+                   if(m3[i] == m3[j]){
+                   m3.splice(j, 1);
+                   }
+                }
+            }
+             
+            return m3;
+       }   
+       
+       function intercept()
+       {
+   //         var m5 = [];
+     //       var m6 = [];
+            var inter = [];
+/*
+            for(var i = 0; i < m1.length; i++){
+                m5.push(m1[i]);
+            }
+            for(var i = 0; i < m2.length; i++){
+                m6.push(m2[i]);
+            }*/
+            for(var i = 0; i < m1.length; i++){
+                for(var j = 0; j < m2.length; j++){
+                   if(m1[i] == m2[j]){
+                   inter.push(m1[i]);
+                   }
+                }
+            } 
+            for(var i = 0; i < inter.length; i++){
+                for(var j = i + 1; j < inter.length; j++){
+                   if(inter[i] == inter[j]){
+                   inter.splice(j, 1);
+                   }
+                }
+            }
+            for(var i = 0; i < inter.length; i++){
+                for(var j = i + 1; j < inter.length; j++){
+                   if(inter[i] == inter[j]){
+                   inter.splice(j, 1);
+                   }
+                }
+            }
+            for(var i = 0; i < inter.length; i++){
+                for(var j = i + 1; j < inter.length; j++){
+                   if(inter[i] == inter[j]){
+                   inter.splice(j, 1);
+                   }
+                }
+            }
+            return inter;
+       }            
+       
+       function calc()
+       {
+           var result = "";
+           var result1 = "";
+           m1 = document.getElementById('m1').value;
+           m2 = document.getElementById('m2').value;
+           m1 = m1.split(" "); 
+           m2 = m2.split(" ");
+           result = union();
+           result1 = intercept();
+           document.getElementById('union').innerHTML = result;
+           document.getElementById('intercept').innerHTML = result1;
+       }
+
+  </script>
+
+
+  <form>
+        Массив А <input type='text' id='m1' name=''><br><br>
+        Массив В <input type='text' id='m2' name=''><br>
+        <input type='button' value='Рассчитать' onclick="calc();"><br>
+
+  </form>
+  Объединение множеств: <span id='union'></span><br>
+  Пересечение множеств: <span id='intercept'></span><br>
+  Симметрическая разность: <span id='difference'></span><br>
+  
+</body>
+</html>
