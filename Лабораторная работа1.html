@@ -165,14 +165,50 @@
           }
 
        return differ;
-       }    
-       
-
+       }
+    
+       function Difference()
+       {
+           var arr1 = [];
+           var arr2 = [];
+           var dif = [];
+       for (var i = 0; i < m1.length; i++){
+            arr1.push(m1[i]);
+       }
+       for (var i = 0; i < m2.length; i++){
+            arr2.push(m2[i]);
+       }
+       for(var i = 0; i < arr1.length - 1; i++){
+           for(var j = i + 1; j < arr1.length; j++){
+               if(arr1[i] == arr1[j]){
+               arr1.splice(j, 1);
+               }
+           }
+       }for(var i = 0; i < arr1.length - 1; i++){
+           for(var j = i + 1; j < arr1.length; j++){
+               if(arr1[i] == arr1[j]){
+               arr1.splice(j, 1);
+               }
+           }
+       }
+       for(var i = 0; i < arr1.length; i++){
+           for(var j = 0; j < arr2.length; j++){
+               if(arr1[i] == arr2[j]){
+               arr1.splice(i, 1);
+               }
+           }
+       }  
+        for (var i = 0; i < arr1.length; i++){
+            dif.push(arr1[i]);
+       }
+       return dif;
+       }
        function calc()
        {
            var result = "";
            var result1 = "";
            var result2 = "";
+           var result3 = "";
            m1 = document.getElementById('m1').value;
            m2 = document.getElementById('m2').value;
            m1 = m1.split(" "); 
@@ -180,9 +216,11 @@
            result = union();
            result1 = intercept();
            result2 = SimDifference();
+           result3 = Difference();
            document.getElementById('union').innerHTML = result;
            document.getElementById('intercept').innerHTML = result1;
            document.getElementById('SimDifference').innerHTML = result2;
+           document.getElementById('Difference').innerHTML = result3;
        }
 
   </script>
@@ -197,6 +235,6 @@
   Объединение множеств: <span id='union'></span><br>
   Пересечение множеств: <span id='intercept'></span><br>
   Симметрическая разность: <span id='SimDifference'></span><br>
-  
+  Разность множеств: <span id='Difference'></span><br>
 </body>
 </html>
